@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>旅遊趣｜探索你的下一段旅行</title>
+    <meta
+      name="description"
+      content="旅遊趣提供世界各地熱門景點、精選行程與舒適旅遊體驗，讓你輕鬆規劃下一次旅行。"
+    />
+    <style>
+      :root {
+        --primary: #0ea5a4;
+        --primary-dark: #0b6d6b;
+        --secondary: #f59e0b;
+        --bg: #f6fbfb;
+        --white: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --card: #ffffff;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.6rem;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: var(--white);
+        box-shadow: 0 12px 30px rgba(14, 165, 164, 0.25);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: var(--white);
+      }
+
+      .topbar {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+        font-size: 1.4rem;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary), #8dd9d8);
+        color: var(--white);
+        font-size: 1.4rem;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .nav a:hover {
+        color: var(--primary-dark);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .header-actions .btn {
+        padding: 0.7rem 1.2rem;
+      }
+
+      .hero {
+        background:
+          linear-gradient(135deg, rgba(10, 31, 29, 0.78), rgba(16, 99, 98, 0.68)),
+          url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        color: var(--white);
+        padding: 110px 0 80px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 20px 0 18px;
+        font-size: clamp(2.8rem, 4vw, 5rem);
+        line-height: 1.08;
+        letter-spacing: -0.05em;
+      }
+
+      .lead {
+        font-size: 1.08rem;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 640px;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 26px;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 24px;
+        margin-top: 34px;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        min-width: 120px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.7rem;
+        margin-bottom: 4px;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+        border-radius: 28px;
+        padding: 22px;
+      }
+
+      .mini-panel {
+        background: var(--white);
+        border-radius: 22px;
+        overflow: hidden;
+        color: var(--text);
+      }
+
+      .mini-panel img {
+        height: 250px;
+        object-fit: cover;
+      }
+
+      .mini-panel-content {
+        padding: 18px 20px 20px;
+      }
+
+      .mini-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .mini-meta .tag {
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: #ecfeff;
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+
+      .mini-panel-content h3 {
+        margin: 0 0 8px;
+        font-size: 1.5rem;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .price-row strong {
+        color: var(--primary-dark);
+        font-size: 1.65rem;
+      }
+
+      .search-box {
+        position: relative;
+        margin-top: -36px;
+        z-index: 2;
+      }
+
+      .search-card {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        box-shadow: var(--shadow);
+        border-radius: 28px;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .field {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 14px 16px;
+      }
+
+      .field label {
+        display: block;
+        color: var(--muted);
+        font-size: 0.78rem;
+        margin-bottom: 7px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .field select,
+      .field input {
+        width: 100%;
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        color: var(--text);
+        outline: none;
+      }
+
+      .search-card .btn {
+        align-self: end;
+        min-height: 58px;
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      .section-head {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 42px;
+      }
+
+      .section-head .label {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--primary-dark);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      h2 {
+        font-size: clamp(2.1rem, 2.8vw, 3.1rem);
+        line-height: 1.2;
+        margin: 0;
+      }
+
+      .section-head p {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .features-grid,
+      .destinations-grid,
+      .packages-grid,
+      .reviews-grid {
+        display: grid;
+        gap: 28px;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .feature-card {
+        background: var(--card);
+        border-radius: 24px;
+        padding: 30px 22px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .feature-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        font-size: 1.8rem;
+        margin-bottom: 18px;
+        background: linear-gradient(135deg, rgba(14, 165, 164, 0.12), rgba(14, 165, 164, 0.05));
+        color: var(--primary);
+      }
+
+      .feature-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.25rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .destinations-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .destination-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(148, 163, 184, 0.09);
+      }
+
+      .destination-card img {
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .destination-card .content {
+        padding: 20px 18px 22px;
+      }
+
+      .location-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .location-row span:last-child {
+        color: var(--secondary);
+        font-size: 0.85rem;
+      }
+
+      .destination-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .packages {
+        background: linear-gradient(180deg, #e8fbfb, #f7fbff);
+      }
+
+      .packages-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .package-card {
+        background: var(--white);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .package-card img {
+        height: 260px;
+        object-fit: cover;
+      }
+
+      .package-body {
+        padding: 22px 22px 28px;
+      }
+
+      .package-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .package-top h3 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .rating {
+        color: #f59e0b;
+        font-weight: 700;
+      }
+
+      .package-body p {
+        color: var(--muted);
+        margin: 10px 0 18px;
+      }
+
+      .package-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .package-meta .days {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .package-price {
+        color: var(--primary-dark);
+        font-weight: 900;
+        font-size: 1.7rem;
+      }
+
+      .experience {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .experience-copy h2 {
+        margin-bottom: 18px;
+      }
+
+      .experience-copy p {
+        color: var(--muted);
+        margin-bottom: 26px;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .check-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        background: rgba(14, 165, 164, 0.06);
+        border-radius: 16px;
+        color: var(--text);
+        font-weight: 700;
+      }
+
+      .check-item span {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--primary);
+        color: var(--white);
+        font-size: 1rem;
+      }
+
+      .experience-photo {
+        position: relative;
+      }
+
+      .experience-photo img {
+        height: 620px;
+        width: 100%;
+        border-radius: 32px;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+      }
+
+      .floating-card {
+        position: absolute;
+        left: -20px;
+        bottom: 30px;
+        background: rgba(255, 255, 255, 0.96);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 18px 20px;
+        max-width: 220px;
+      }
+
+      .floating-card strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.35rem;
+        color: var(--primary-dark);
+      }
+
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .review-card {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 26px 22px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .stars {
+        color: #fbbf24;
+        letter-spacing: 0.08em;
+        font-size: 1.1rem;
+      }
+
+      .review-card p {
+        color: var(--muted);
+        margin: 18px 0;
+      }
+
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .person img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .person strong {
+        display: block;
+      }
+
+      .person small {
+        color: var(--muted);
+      }
+
+      .cta {
+        background: linear-gradient(135deg, #0f172a, #0e5c5a);
+        color: var(--white);
+        padding: 70px 0;
+      }
+
+      .cta-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+        padding: 28px 30px;
+      }
+
+      .cta-box h3 {
+        margin: 0 0 8px;
+        font-size: clamp(1.8rem, 2.3vw, 2.5rem);
+      }
+
+      .cta-box p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      footer {
+        background: #0b1220;
+        color: rgba(255, 255, 255, 0.78);
+        padding: 36px 0 18px;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 28px;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--white);
+      }
+
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 18px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 0.94rem;
+      }
+
+      @media (max-width: 980px) {
+        .hero-inner,
+        .experience,
+        .search-card,
+        .features-grid,
+        .destinations-grid,
+        .packages-grid,
+        .reviews-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .hero-inner,
+        .experience {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .search-card,
+        .features-grid,
+        .destinations-grid,
+        .packages-grid,
+        .reviews-grid,
+        .cta-box,
+        .footer-inner {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .header-actions {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 90px;
+        }
+
+        .cta-box {
+          padding: 22px 18px;
+        }
+
+        h1 {
+          font-size: 2.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container header-inner">
+        <a href="#" class="brand" aria-label="旅遊趣首頁">
+          <span class="brand-mark">✈</span>
+          <span>旅遊趣</span>
+        </a>
+
+        <nav class="nav" aria-label="主選單">
+          <a href="#discover">探索</a>
+          <a href="#destinations">目的地</a>
+          <a href="#packages">熱銷行程</a>
+          <a href="#reviews">評價</a>
+          <a href="#contact">聯絡</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#" class="btn btn-secondary" style="color: var(--primary-dark); border-color: rgba(14,165,164,0.2);">登入</a>
+          <a href="#packages" class="btn btn-primary">立即預訂</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="eyebrow">全新旅遊體驗</div>
+            <h1>讓每一段旅行，成為最美好的故事</h1>
+            <p class="lead">
+              從海灘日落到山林晨霧，探索最適合你的旅程。我們用貼心規劃與優質服務，帶你走進每個值得記住的地方。
+            </p>
+
+            <div class="hero-actions">
+              <a href="#packages" class="btn btn-primary">查看熱門行程</a>
+              <a href="#discover" class="btn btn-secondary">了解更多</a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <strong>120K+</strong>
+                <span>旅行者</span>
+              </div>
+              <div class="stat">
+                <strong>320+</strong>
+                <span>城市目的地</span>
+              </div>
+              <div class="stat">
+                <strong>4.9/5</strong>
+                <span>顧客評價</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="mini-panel">
+              <img
+                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80"
+                alt="旅行照片"
+              />
+              <div class="mini-panel-content">
+                <div class="mini-meta">
+                  <span class="tag">限時優惠</span>
+                  <span>8天7夜</span>
+                </div>
+                <h3>北海道雪景之旅</h3>
+                <div class="price-row">
+                  <span>從</span>
+                  <strong>$12,800</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container search-box">
+        <div class="search-card">
+          <div class="field">
+            <label>目的地</label>
+            <select>
+              <option>日本</option>
+              <option>韓國</option>
+              <option>泰國</option>
+              <option>歐洲</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>出發日期</label>
+            <input type="date" value="2026-09-12" />
+          </div>
+          <div class="field">
+            <label>旅遊風格</label>
+            <select>
+              <option>海島度假</option>
+              <option>文化探索</option>
+              <option>美食之旅</option>
+              <option>親子旅行</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="button">開始搜尋</button>
+        </div>
+      </div>
+
+      <section id="discover">
+        <div class="container">
+          <div class="section-head">
+            <span class="label">Why choose us</span>
+            <h2>輕鬆規劃，安心出發</h2>
+            <p>
+              從行程設計到入住安排，我們為每位旅人提供個人化旅遊建議與一站式服務。
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-icon">🧭</div>
+              <h3>專業規劃</h3>
+              <p>依照你的興趣與預算，量身打造每次旅程。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🏨</div>
+              <h3>安心住宿</h3>
+              <p>精選高評價住宿，舒適與便利兼顧。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">🎫</div>
+              <h3>一站式預訂</h3>
+              <p>機票、酒店、景點門票，一次搞定不煩惱。</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon">💬</div>
+              <h3>24小時客服</h3>
+              <p>旅途中隨時有專業團隊為你服務。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="destinations">
+        <div class="container">
+          <div class="section-head">
+            <span class="label">Popular destinations</span>
+            <h2>熱門目的地</h2>
+            <p>選擇你最想去的風景，每一次旅行都值得細細享受。</p>
+          </div>
+
+          <div class="destinations-grid">
+            <article class="destination-card">
+              <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=800&q=80" alt="京都" />
+              <div class="content">
+                <div class="location-row">
+                  <span>京都</span>
+                  <span>日本</span>
+                </div>
+                <p>古街、神社與四季美景，適合慢慢走訪。</p>
+              </div>
+            </article>
+
+            <article class="destination-card">
+              <img src="https://images.unsplash.com/photo-1505761671935-60e3a7f8b2e2?auto=format&fit=crop&w=800&q=80" alt="巴黎" />
+              <div class="content">
+                <div class="location-row">
+                  <span>巴黎</span>
+                  <span>法國</span>
+                </div>
+                <p>浪漫鐵塔、文藝街區、甜蜜時光。</p>
+              </div>
+            </article>
+
+            <article class="destination-card">
+              <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80" alt="巴厘島" />
+              <div class="content">
+                <div class="location-row">
+                  <span>巴厘島</span>
+                  <span>印尼</span>
+                </div>
+                <p>陽光、海灘與放鬆度假，最適合療癒旅行。</p>
+              </div>
+            </article>
+
+            <article class="destination-card">
+              <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="紐約" />
+              <div class="content">
+                <div class="location-row">
+                  <span>紐約</span>
+                  <span>美國</span>
+                </div>
+                <p>城市光影、購物與美食，感受多元文化。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages" class="packages">
+        <div class="container">
+          <div class="section-head">
+            <span class="label">Featured trips</span>
+            <h2>熱銷行程推薦</h2>
+            <p>從輕鬆放鬆到探索冒險，選擇最適合你的旅行方式。</p>
+          </div>
+
+          <div class="packages-grid">
+            <article class="package-card">
+              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=900&q=80" alt="冰島旅遊" />
+              <div class="package-body">
+                <div class="package-top">
+                  <h3>冰島奇景</h3>
+                  <span class="rating">★★★★★</span>
+                </div>
+                <p>瀑布、火山與北極光，帶你感受最原始的自然之美。</p>
+                <div class="package-meta">
+                  <span class="days">6天5夜</span>
+                  <span class="package-price">$19,500</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="package-card">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80" alt="義大利旅遊" />
+              <div class="package-body">
+                <div class="package-top">
+                  <h3>義大利文化</h3>
+                  <span class="rating">★★★★★</span>
+                </div>
+                <p>羅馬、佛羅倫斯與威尼斯的好風景，讓旅行更有故事。</p>
+                <div class="package-meta">
+                  <span class="days">7天6夜</span>
+                  <span class="package-price">$24,800</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="package-card">
+              <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="泰國海島旅遊" />
+              <div class="package-body">
+                <div class="package-top">
+                  <h3>泰國海島</h3>
+                  <span class="rating">★★★★★</span>
+                </div>
+                <p>湛藍海水、海灘日落與輕鬆美食，讓你完全放空。</p>
+                <div class="package-meta">
+                  <span class="days">5天4夜</span>
+                  <span class="package-price">$13,900</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container experience">
+          <div class="experience-copy">
+            <span class="label" style="color: var(--primary-dark);">Travel with comfort</span>
+            <h2>不只去旅行，更享受每一刻</h2>
+            <p>
+              我們相信好的旅程，來自細節的用心。從一路上的接送安排、專屬導覽，到飯店選擇與行程節奏，都以旅客體驗為中心。
+            </p>
+
+            <div class="check-list">
+              <div class="check-item"><span>✓</span> 專屬客製化旅遊規劃</div>
+              <div class="check-item"><span>✓</span> 品質住宿與交通安排</div>
+              <div class="check-item"><span>✓</span> 當地導覽與景點預約</div>
+            </div>
+          </div>
+
+          <div class="experience-photo">
+            <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80" alt="旅行情境" />
+            <div class="floating-card">
+              <strong>12,500+</strong>
+              <span>精選旅遊行程</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="container">
+          <div class="section-head">
+            <span class="label">Traveler reviews</span>
+            <h2>旅客的真實評價</h2>
+            <p>每位旅客的回饋，都是我們持續進步的動力。</p>
+          </div>
+
+          <div class="reviews-grid">
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                行程安排很順暢，住宿也很舒服，到了當地也有專人協助。這次旅行真的很輕鬆，完全沒有壓力。
+              </p>
+              <div class="person">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Linda" />
+                <div>
+                  <strong>Linda</strong>
+                  <small>日本京都旅遊</small>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                我喜歡他們的專屬規劃，景點和餐廳都很符合我們的喜好，真的很貼心，強烈推薦。
+              </p>
+              <div class="person">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Jason" />
+                <div>
+                  <strong>Jason</strong>
+                  <small>法國巴黎旅遊</small>
+                </div>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                服務超細心，導覽人員很專業，而且預算規劃得很合理。下次還會再預訂這家旅行社。
+              </p>
+              <div class="person">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80" alt="Mia" />
+                <div>
+                  <strong>Mia</strong>
+                  <small>泰國海島旅遊</small>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="contact">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>準備好出發了嗎？</h3>
+              <p>讓我們為你規劃下一段難忘的旅程。</p>
+            </div>
+            <a href="#" class="btn btn-primary">聯絡旅行顧問</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="brand-mark" style="width: 38px; height: 38px; font-size: 1.1rem;">✈</span>
+          <span>旅遊趣</span>
+        </div>
+
+        <nav class="footer-nav" aria-label="頁尾導覽">
+          <a href="#discover">關於我們</a>
+          <a href="#destinations">目的地</a>
+          <a href="#packages">行程</a>
+          <a href="#reviews">評價</a>
+        </nav>
+      </div>
+      <div class="copyright">© <span id="year"></span> 旅遊趣 All rights reserved.</div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
